@@ -71,3 +71,43 @@ th,td{
 tr:hover{
     background:#f2f8ff;
 }
+.stats{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card{
+    flex:1;
+    background:#ffffff;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card h4{
+    color:#666;
+    margin-bottom:10px;
+}
+
+.card h2{
+    color:#003366;
+    font-size:32px;
+}
+.merah{
+    background:#ffcccc;
+    color:#b00000;
+    font-weight:bold;
+}
+
+.kuning{
+    background:#fff3cd;
+    color:#856404;
+    font-weight:bold;
+}
+
+.hijau{
+    background:#d4edda;
+    color:#155724;
+    font-weight:bold;
+}

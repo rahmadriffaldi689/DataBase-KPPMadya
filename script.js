@@ -1,5 +1,9 @@
 function tampilkanData(data){
 
+document.getElementById(
+"totalTampil"
+).innerHTML = data.length;
+
 let html = "";
 
 data.forEach(item=>{
@@ -9,7 +13,24 @@ html += `
 <td>${item.nama}</td>
 <td>${item.perusahaan}</td>
 <td>${item.kpp}</td>
-<td>${item.expired}</td>
+function warnaMasaBerlaku(tahun){
+
+const sekarang = new Date().getFullYear();
+
+if(tahun <= sekarang){
+    return "merah";
+}
+
+if(tahun <= sekarang + 1){
+    return "kuning";
+}
+
+return "hijau";
+
+}
+<td class="${warnaMasaBerlaku(item.expired)}">
+${item.expired}
+</td>
 </tr>
 `;
 
@@ -17,6 +38,7 @@ html += `
 
 document.getElementById("tbl").innerHTML =
 html;
+
 
 }
 
