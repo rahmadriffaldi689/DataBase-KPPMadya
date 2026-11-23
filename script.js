@@ -2,7 +2,7 @@ function tampilkanData(data){
 
 let html = "";
 
-data.forEach(item => {
+data.forEach(item=>{
 
 html += `
 <tr>
@@ -15,27 +15,94 @@ html += `
 
 });
 
-document.getElementById("tbl").innerHTML = html;
+document.getElementById("tbl").innerHTML =
+html;
 
 }
 
-tampilkanData(employeeData);
+function isiPerusahaan(){
+
+const perusahaan =
+[
+...new Set(
+employeeData.map(
+item=>item.perusahaan
+)
+)
+];
+
+const select =
+document.getElementById(
+"filterPerusahaan"
+);
+
+perusahaan.forEach(p=>{
+
+let option =
+document.createElement("option");
+
+option.value = p;
+option.textContent = p;
+
+select.appendChild(option);
+
+});
+
+}
 
 document
 .getElementById("search")
-.addEventListener("keyup", function(){
+.addEventListener("keyup",filterData);
+
+document
+.getElementById("filterPerusahaan")
+.addEventListener("change",filterData);
+
+function filterData(){
 
 let keyword =
-this.value.toLowerCase();
+document.getElementById("search")
+.value.toLowerCase();
+
+let perusahaan =
+document.getElementById("filterPerusahaan")
+.value;
 
 let hasil =
-employeeData.filter(item =>
+employeeData.filter(item=>{
 
-item.nama.toLowerCase()
-.includes(keyword)
+const cocokNama =
+item.nama
+.toLowerCase()
+.includes(keyword);
 
-);
+const cocokPerusahaan =
+perusahaan === "" ||
+item.perusahaan === perusahaan;
+
+return cocokNama &&
+cocokPerusahaan;
+
+});
 
 tampilkanData(hasil);
 
-});
+}
+
+document.getElementById(
+"totalPersonel"
+).innerText =
+employeeData.length;
+
+document.getElementById(
+"totalPerusahaan"
+).innerText =
+new Set(
+employeeData.map(
+item=>item.perusahaan
+)
+).size;
+
+isiPerusahaan();
+
+tampilkanData(employeeData);

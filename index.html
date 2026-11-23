@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Database KPP Madya</title>
 
@@ -22,37 +24,45 @@
 
 <div class="container">
 
+<div class="stats">
+
+<div class="card">
+<h4>Total Personel</h4>
+<h2 id="totalPersonel">0</h2>
+</div>
+
+<div class="card">
+<h4>Total Perusahaan</h4>
+<h2 id="totalPerusahaan">0</h2>
+</div>
+
+</div>
+
 <input
 type="text"
 id="search"
-placeholder="Cari Nama Personel">
+placeholder="Cari Nama Karyawan...">
+
+<select id="filterPerusahaan">
+
+<option value="">Semua Perusahaan</option>
+
+</select>
 
 <table>
 
 <thead>
+
 <tr>
 <th>Nama</th>
 <th>Perusahaan</th>
 <th>KPP</th>
 <th>Berlaku Sampai</th>
 </tr>
+
 </thead>
 
 <tbody id="tbl">
-
-<tr>
-<td>Khafrawi</td>
-<td>PT Adaro Indonesia</td>
-<td>110/2025</td>
-<td>2027</td>
-</tr>
-
-<tr>
-<td>Yusup Rahimi</td>
-<td>PT Adaro Indonesia</td>
-<td>161/2024</td>
-<td>2026</td>
-</tr>
 
 </tbody>
 
@@ -62,5 +72,6 @@ placeholder="Cari Nama Personel">
 
 <script src="data.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
