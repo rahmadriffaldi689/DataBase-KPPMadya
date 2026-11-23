@@ -1,8 +1,8 @@
 function tampilkanData(data){
 
-let html="";
+let html = "";
 
-data.forEach(item=>{
+data.forEach(item => {
 
 html += `
 <tr>
@@ -15,8 +15,7 @@ html += `
 
 });
 
-document.getElementById("tbl").innerHTML =
-html;
+document.getElementById("tbl").innerHTML = html;
 
 }
 
@@ -24,13 +23,13 @@ tampilkanData(employeeData);
 
 document
 .getElementById("search")
-.addEventListener("keyup",function(){
+.addEventListener("keyup", function(){
 
 let keyword =
 this.value.toLowerCase();
 
 let hasil =
-employeeData.filter(item=>
+employeeData.filter(item =>
 
 item.nama.toLowerCase()
 .includes(keyword)
