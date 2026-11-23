@@ -4,6 +4,35 @@ fetch("data.json")
 .then(response => response.json())
 .then(data => {
 
+employeeData = data;
+
+document.getElementById(
+"totalPersonel"
+).innerHTML =
+employeeData.length;
+
+document.getElementById(
+"totalPerusahaan"
+).innerHTML =
+new Set(
+employeeData.map(
+item => item.perusahaan
+)
+).size;
+
+isiFilterPerusahaan();
+
+tampilkanData(
+employeeData
+);
+
+});
+let employeeData = [];
+
+fetch("data.json")
+.then(response => response.json())
+.then(data => {
+
     employeeData = data;
 
     document.getElementById(
