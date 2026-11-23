@@ -1,3 +1,26 @@
+function statusWarna(tahun){
+
+const sekarang =
+new Date().getFullYear();
+
+tahun = Number(tahun);
+
+if(tahun <= sekarang){
+
+return "expired";
+
+}
+
+if(tahun <= sekarang + 1){
+
+return "warning";
+
+}
+
+return "aktif";
+
+}
+
 function tampilkanData(data){
 
 document.getElementById(
@@ -10,41 +33,31 @@ data.forEach(item=>{
 
 html += `
 <tr>
+
 <td>${item.nama}</td>
+
 <td>${item.perusahaan}</td>
+
 <td>${item.kpp}</td>
-function warnaMasaBerlaku(tahun){
 
-const sekarang = new Date().getFullYear();
-
-if(tahun <= sekarang){
-    return "merah";
-}
-
-if(tahun <= sekarang + 1){
-    return "kuning";
-}
-
-return "hijau";
-
-}
-<td class="${warnaMasaBerlaku(item.expired)}">
+<td class="${statusWarna(item.expired)}">
 ${item.expired}
 </td>
+
 </tr>
 `;
 
 });
 
-document.getElementById("tbl").innerHTML =
-html;
-
+document.getElementById(
+"tbl"
+).innerHTML = html;
 
 }
 
-function isiPerusahaan(){
+function isiFilterPerusahaan(){
 
-const perusahaan =
+const daftar =
 [
 ...new Set(
 employeeData.map(
@@ -58,39 +71,41 @@ document.getElementById(
 "filterPerusahaan"
 );
 
-perusahaan.forEach(p=>{
+daftar.forEach(item=>{
 
 let option =
 document.createElement("option");
 
-option.value = p;
-option.textContent = p;
+option.value =
+item;
 
-select.appendChild(option);
+option.textContent =
+item;
+
+select.appendChild(
+option
+);
 
 });
 
 }
 
-document
-.getElementById("search")
-.addEventListener("keyup",filterData);
-
-document
-.getElementById("filterPerusahaan")
-.addEventListener("change",filterData);
-
 function filterData(){
 
-let keyword =
-document.getElementById("search")
-.value.toLowerCase();
+const keyword =
+document
+.getElementById("search")
+.value
+.toLowerCase();
 
-let perusahaan =
-document.getElementById("filterPerusahaan")
+const perusahaan =
+document
+.getElementById(
+"filterPerusahaan"
+)
 .value;
 
-let hasil =
+const hasil =
 employeeData.filter(item=>{
 
 const cocokNama =
@@ -99,8 +114,11 @@ item.nama
 .includes(keyword);
 
 const cocokPerusahaan =
+
 perusahaan === "" ||
-item.perusahaan === perusahaan;
+
+item.perusahaan ===
+perusahaan;
 
 return cocokNama &&
 cocokPerusahaan;
@@ -111,20 +129,42 @@ tampilkanData(hasil);
 
 }
 
-document.getElementById(
+document
+.getElementById("search")
+.addEventListener(
+"keyup",
+filterData
+);
+
+document
+.getElementById(
+"filterPerusahaan"
+)
+.addEventListener(
+"change",
+filterData
+);
+
+document
+.getElementById(
 "totalPersonel"
-).innerText =
+)
+.innerHTML =
 employeeData.length;
 
-document.getElementById(
+document
+.getElementById(
 "totalPerusahaan"
-).innerText =
+)
+.innerHTML =
 new Set(
 employeeData.map(
 item=>item.perusahaan
 )
 ).size;
 
-isiPerusahaan();
+isiFilterPerusahaan();
 
-tampilkanData(employeeData);
+tampilkanData(
+employeeData
+);

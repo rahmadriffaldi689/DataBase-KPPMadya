@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Database KPP Madya</title>
 
@@ -14,44 +13,52 @@
 
 <body>
 
-<div class="header">
+<header>
+
+<div class="header-content">
 
 <h1>DATABASE KPP MADYA</h1>
-
 <p>Sertifikasi Pengawas Operasional Utama</p>
 
 </div>
 
+</header>
+
 <div class="container">
 
-<div class="stats">
+<div class="cards">
 
 <div class="card">
-<h4>Total Personel</h4>
-<h2 id="totalPersonel">0</h2>
-</div>
-
-<div class="card">
-<h4>Total Perusahaan</h4>
-<h2 id="totalPerusahaan">0</h2>
+<h3>Total Personel</h3>
+<div id="totalPersonel">0</div>
 </div>
 
 <div class="card">
-<h4>Data Tampil</h4>
-<h2 id="totalTampil">0</h2>
+<h3>Total Perusahaan</h3>
+<div id="totalPerusahaan">0</div>
+</div>
+
+<div class="card">
+<h3>Data Tampil</h3>
+<div id="totalTampil">0</div>
 </div>
 
 </div>
+
+<div class="filter-box">
+
 <input
 type="text"
 id="search"
-placeholder="Cari Nama Karyawan...">
+placeholder="Cari Nama Personel...">
 
 <select id="filterPerusahaan">
-
 <option value="">Semua Perusahaan</option>
-
 </select>
+
+</div>
+
+<div class="table-container">
 
 <table>
 
@@ -66,13 +73,19 @@ placeholder="Cari Nama Karyawan...">
 
 </thead>
 
-<tbody id="tbl">
-
-</tbody>
+<tbody id="tbl"></tbody>
 
 </table>
 
 </div>
+
+</div>
+
+<footer>
+
+Database KPP Madya © 2026
+
+</footer>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
